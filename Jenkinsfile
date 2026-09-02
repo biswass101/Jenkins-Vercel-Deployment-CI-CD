@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'NodeJS-24'
+    }
+
     environment {
         VERCEL_TOKEN = credentials('vercel_token')
     }
@@ -8,6 +12,8 @@ pipeline {
     stages {
         stage('Install') {
             steps {
+                sh 'node -v'
+                sh 'npm -v'
                 sh 'npm install'
             }
         }
